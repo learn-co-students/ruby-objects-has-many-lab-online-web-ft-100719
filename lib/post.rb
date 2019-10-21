@@ -11,8 +11,13 @@ attr_accessor :title, :author
     @@all
   end
   
+  def author=(author)
+    @author=author
+    author.posts<< self
+  end
+
   def author_name
-    self.author.name
+    self.author ? self.author.name : nil
   end
   
 end

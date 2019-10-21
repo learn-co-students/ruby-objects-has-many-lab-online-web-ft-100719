@@ -1,6 +1,5 @@
 class Author
-attr_accessor :name
-attr_reader :posts
+attr_accessor :name, :posts
 
   def initialize(name)
     @name=name
@@ -8,17 +7,17 @@ attr_reader :posts
   end
   
   def add_post(post)
-    @posts<< post
-    post.artist=self
+    post.author=self
+    @posts<< post unless @posts.include?(post)
   end
   
   def add_post_by_title(post_title)
-    poste=Post.new(post_title)
-    self.add_post(poste)
+    post=Post.new(post_title)
+    self.add_post(post)
   end
   
-  def post_count
-    self.posts.size
+  def self.post_count
+    Post.all.size
   end
   
 end
