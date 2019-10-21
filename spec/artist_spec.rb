@@ -1,5 +1,5 @@
 require "spec_helper"
-
+require 'pry'
 describe "Artist" do
 
   let!(:adele) { Artist.new("Adele") }
@@ -21,6 +21,7 @@ describe "Artist" do
         expect(adele.songs).to be_a(Array)
         hello = Song.new("Hello")
         hello.artist = adele
+        # binding.pry
         expect(adele.songs).to eq([hello])
       end
     end
@@ -29,6 +30,7 @@ describe "Artist" do
       it "takes in an argument of a song and associates that song with the artist by telling the song that it belongs to that artist" do
         hello = Song.new("Hello")
         adele.add_song(hello)
+        # binding.pry
         expect(adele.songs).to include(hello)
         expect(hello.artist).to eq(adele)
       end
