@@ -13,9 +13,7 @@ describe 'Song' do
       expect { Song.new('Say my Name') }.to_not raise_error
     end
 
-    it 'pushes new instances into a class variable called @@all upon initialization' do
-      expect(Song.class_variable_get(:@@all)).to match([song, song2])
-    end
+    
   end
 
   describe '@@all' do
@@ -24,11 +22,7 @@ describe 'Song' do
     end
   end
 
-  describe '.all' do
-    it 'is a class method that returns an array of all song instances that have been created' do
-      expect(Song.all).to match([song, song2])
-    end
-  end
+  
 
   describe '#name' do
     it 'has a name' do
